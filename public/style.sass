@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@300;400;500&display=swap')
+
+$preto: #0D0D0D
+$preto-secundario: #111111
+$branco: #F5F5F5
+$branco-suave: #EAEAEA
+$verde-principal: #2E7D32
+$verde-hover: #66BB6A
+$verde-escuro: #1B5E20
+$verde-destaque: #00C853
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html, body
+  height: 100vh
+  overflow: hidden
+
+body
+  background-color: $preto
+  color: $branco
+  font-family: 'Lora', serif
+
+  &.quem-sou
+    background-color: $branco-suave
+    color: $preto-secundario
+
+.header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100px
+
+  display: flex
+  justify-content: center
+  align-items: center
+
+  z-index: 999
+  background: rgba(255, 255, 255, 0.05)
+  backdrop-filter: blur(12px)
+  -webkit-backdrop-filter: blur(12px)
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08)
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3)
+  transition: all 0.3s ease
+
+  .header-link
+    color: $verde-principal
+    text-decoration: none
+    margin: 0 25px
+    font-weight: 400
+    letter-spacing: 1px
+    position: relative
+    transition: all 0.3s ease
+
+    &:hover
+      color: $verde-destaque
+
+    &.active
+      color: $verde-hover
+
+    &::after
+      content: ""
+      position: absolute
+      bottom: -6px
+      left: 0
+      width: 0%
+      height: 2px
+      background: $verde-principal
+      transition: width 0.3s ease
+
+    &:hover::after
+      width: 100%
+
+    &.active::after
+      width: 100%
+
+.geral
+  height: calc(100vh - 100px)
+  position: relative
+
+  .title,
+  .subtitle
+    opacity: 0
+    transform: translateY(20px)
+    transition: opacity 1s ease, transform 1s ease
+
+.box
+  display: flex
+  align-items: center
+  height: 100%
+  padding: 0 10%
+  position: absolute
+  inset: 0
+  opacity: 0
+  transform: translateY(40px) scale(0.98)
+    
+  &.ativo
+    animation: switchPage 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards
+
+.esquerda,
+.direita
+  flex: 1
+
+.intro
+  align-items: center
+  .esquerda
+    display: flex
+    flex-direction: column
+    text-align: center
+
+.banner
+  filter: grayscale(1)
+
+.title
+  font-size: clamp(80px, 10vw, 180px)
+  font-family: "Tangerine", cursive
+  line-height: 0.9
+
+
+.subtitle
+  letter-spacing: 4px
+  font-size: 14px
+  opacity: 0.8
+  color: $verde-destaque
+
+.show
+  opacity: 1 !important
+  transform: translateY(0)
+
+body.quem-sou
+  .geral
+    .esquerda
+      display: flex
+      flex-direction: column
+      margin: 20px
+      justify-content: center
+      align-items: center
+      text-align: center
+      .title
+        opacity: 1
+        color: $verde-principal
+        margin-bottom: 60px
+      p
+        margin-bottom: 5px
+
+@keyframes switchPage
+  0%
+    opacity: 0
+    filter: blur(8px)
+
+  10%
+    opacity: 0.1
+    filter: blur(7px)
+
+  20%
+    opacity: 0.2
+    filter: blur(6px)
+
+  30%
+    opacity: 0.35
+    filter: blur(5px)
+
+  40%
+    opacity: 0.5
+    filter: blur(4px)
+
+  50%
+    opacity: 0.6
+    filter: blur(3px)
+
+  60%
+    opacity: 0.7
+    filter: blur(2px)
+
+  70%
+    opacity: 0.8
+    filter: blur(1.5px)
+
+  80%
+    opacity: 0.9
+    filter: blur(1px)
+
+  90%
+    opacity: 0.95
+    filter: blur(0.5px)
+
+  100%
+    opacity: 1
+    filter: blur(0)
+
+
+    
